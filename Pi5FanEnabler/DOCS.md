@@ -1,6 +1,6 @@
 # Home Assistant OS Pi 5 Fan Enabler
 Enables the fan on the Raspberry Pi 5 when running Home Assistant OS.
-The configuration creates four fan speed thresholds:<br>
+The configuration creates by four customizable fan speed thresholds, default values are:<br>
 35°C: 30% speed<br>
 50°C: 49% speed<br>
 60°C: 69% speed<br>
@@ -11,9 +11,9 @@ The configuration creates four fan speed thresholds:<br>
 Support is provided on the project's Github page https://github.com/olivierbutler/Pi5FanEnabler
 
 # Operation
-Disable Protection Mode First! Then hit the start button and observe the logs. You may uninstall the Add-On when complete. 
+Disable Protection Mode First!<br>Then hit the start button and observe the logs.<br>You may uninstall the Add-On when complete. 
 **Important Note** when requested to reboot, pull the power plug from your machine and restart it, or do a full host reboot if you know how to do that. Make sure you do this **twice** - you must do two reboots!
-Hit the start button and observe the logs. You may uninstall the Add-On when complete. 
+Hit the start button and observe the logs.<br>You may uninstall the Add-On when complete. 
 
 # Home Assistant Sensors
 You can create sensors in Home Assistant to monitor the speed of the fan, both in terms of RPM and percentage of maximum speed.<br>

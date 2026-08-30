@@ -3,8 +3,9 @@ whoami
 id
 
 echo $0
-echo " "
+echo "#"
 echo "############################################"
+echo "#"
 
 nc -lk -p 8099 -e  echo -e 'HTTP/1.1 200 OK\r\nServer: DeskPiPro\r\nDate:$(date)\r\nContent-Type: text/html; charset=UTF8\r\nCache-Control: no-store, no cache, must-revalidate\r\n\r\n<!DOCTYPE html><html><body><p>HassOS Pi 5 Fan Enabler WebUI.</p></body></html>\r\n\n\n' &
 
@@ -14,23 +15,36 @@ FAN_TEMP0=$(bashio::config 'fan_temp0')
 FAN_TEMP0_S=$(bashio::config 'fan_temp0_speed')
 FAN_TEMP0_H=$(bashio::config 'fan_temp0_hyst')
 
+FAN_TEMP1=$(bashio::config 'fan_temp1')
+FAN_TEMP1_S=$(bashio::config 'fan_temp1_speed')
+FAN_TEMP1_H=$(bashio::config 'fan_temp1_hyst')
+
+FAN_TEMP2=$(bashio::config 'fan_temp2')
+FAN_TEMP2_S=$(bashio::config 'fan_temp2_speed')
+FAN_TEMP2_H=$(bashio::config 'fan_temp2_hyst')
+
+FAN_TEMP3=$(bashio::config 'fan_temp3')
+FAN_TEMP3_S=$(bashio::config 'fan_temp3_speed')
+FAN_TEMP3_H=$(bashio::config 'fan_temp3_hyst')
+
+
 # Fan configuration lines
 fan_config_lines=(
 "dtparam=fan_temp0=${FAN_TEMP0}000"
 "dtparam=fan_temp0_hyst=${FAN_TEMP0_H}000"
 "dtparam=fan_temp0_speed=${FAN_TEMP0_S}"
 
-"dtparam=fan_temp1=50000"
-"dtparam=fan_temp1_hyst=5000"
-"dtparam=fan_temp1_speed=125"
+"dtparam=fan_temp1=${FAN_TEMP1}000"
+"dtparam=fan_temp1_hyst=${FAN_TEMP1_H}000"
+"dtparam=fan_temp1_speed=${FAN_TEMP1_S}"
 
-"dtparam=fan_temp2=60000"
-"dtparam=fan_temp2_hyst=5000"
-"dtparam=fan_temp2_speed=175"
+"dtparam=fan_temp2=${FAN_TEMP2}000"
+"dtparam=fan_temp2_hyst=${FAN_TEMP2_H}000"
+"dtparam=fan_temp2_speed=${FAN_TEMP2_S}"
 
-"dtparam=fan_temp3=65000"
-"dtparam=fan_temp3_hyst=5000"
-"dtparam=fan_temp3_speed=250"
+"dtparam=fan_temp3=${FAN_TEMP3}000"
+"dtparam=fan_temp3_hyst=${FAN_TEMP3_H}000"
+"dtparam=fan_temp3_speed=${FAN_TEMP3_S}"
 )
 
 until false; do
@@ -46,9 +60,10 @@ until false; do
   insertFanConfig () {
     partition=$1
     if [ ! -e /dev/$partition ]; then
-      echo "no $partition available"
+      echo "no partition $partition available"
       return
     fi
+    echo "Partition $partition found"
 
     umount /tmp/$partition 2>/dev/null
     mount /dev/$partition /tmp/$partition 2>/dev/null
@@ -63,10 +78,11 @@ until false; do
           echo "'$line' already exists in $partition/config.txt"
         fi
       done
-      echo " "
+      echo "="
       echo "================================="
       cat /tmp/$partition/config.txt
       echo "================================="
+      echo "="
     else
       echo "No config.txt found on $partition"
     fi
@@ -98,9 +114,9 @@ until false; do
   else
       echo "no fan device found"
   fi
-  echo ""
+  echo "#"
   echo "Fan configuration complete. Perform a hard power-off reboot TWICE to activate."
-  echo " "
+  echo "#"
   echo "############################################"
 
   sleep 99999

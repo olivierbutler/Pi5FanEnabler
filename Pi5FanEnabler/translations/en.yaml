@@ -7,22 +7,31 @@ configuration:
     description: Fan speed at threshold 1 on a scale of 0-255 where 255 is 100%. (default is 75 / 30%)
   fan_temp0_hyst:
     name: Threshold 1 Fan Hysteresis
-    description: Temperature threshold in °C (default 5)
+    description: Temperature hysteresis in °C (default 5)
   fan_temp1:
     name: Threshold 2 Fan Temperature 
     description: Lowest temperature threshold in °C (default 50)
   fan_temp1_speed:
     name: Threshold 2 Fan Speed
-    description: Fan speed at threshold 2 on a scale of 0-255 where 255 is 100%.  (default is 125 / 49%)
+    description: Fan speed at threshold 2 on a scale of 0-255 where 255 is 100%. (default is 125 / 49%)
+  fan_temp1_hyst:
+    name: Threshold 2 Fan Hysteresis
+    description: Temperature hysteresis in °C (default 5)
   fan_temp2:
     name: Threshold 3 Fan Temperature 
     description: Lowest temperature threshold in °C (default 60)
   fan_temp2_speed:
     name: Threshold 3 Fan Speed
     description: Fan speed at threshold 3 on a scale of 0-255 where 255 is 100%. (default is 175 / 69%)
+  fan_temp2_hyst:
+    name: Threshold 3 Fan Hysteresis
+    description: Temperature hysteresis in °C (default 5)
   fan_temp3:
     name: Threshold 4 Fan Temperature 
     description: Lowest temperature threshold in °C (default 65)
   fan_temp3_speed:
     name: Threshold 4 Fan Speed
     description: Fan speed at threshold 4 on a scale of 0-255 where 255 is 100%. (default is 250 / 98%)
+  fan_temp3_hyst:
+    name: Threshold 4 Fan Hysteresis
+    description: Temperature hysteresis in °C (default 5)
