@@ -1,5 +1,5 @@
 name: "Pi 5 Fan Enabler"
-version: "0.82"
+version: "0.9"
 slug: "pi5enableraddon"
 description: "This enables the fan on the Raspberry Pi 5 when running Home Assistant OS. You can uninstall this when it has run once. Check logs for information."
 arch:
@@ -13,11 +13,12 @@ privileged:
   - SYS_ADMIN
 stage: "stable"
 full_access: true
-url: "https://www.speaktothegeek.co.uk"
+url: "https://github.com/olivierbutler/Pi5FanEnabler"
 boot: "manual"
-#options:
-#  fan_temp0: 35
-#  fan_temp0_speed: 75
+options:
+  fan_temp0: 35
+  fan_temp0_speed: 75
+  fan_temp0_hyst: 5
 #  fan_temp1: 50
 #  fan_temp1_speed: 125
 #  fan_temp2: 60

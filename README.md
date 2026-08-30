@@ -12,7 +12,7 @@ The configuration creates four fan speed thresholds:<br>
 # Installation
 Enabled Advanced Mode first - click on your username in the bottom-left corner and then toggle Advanced Mode under User Preferences.<br>
 Within Home Assistant, click Settings -> Apps -> Install App button bottom-right -> Click the three dots in the top right -> choose 'Repositories'.<br>
-Paste in the URL of this repository: https://github.com/sOckhamSter/Pi5FanEnabler<br>
+Paste in the URL of this repository: https://github.com/olivierbutler/Pi5FanEnabler<br>
 Install the "Pi 5 Fan Enabler" app/add-on and Disable Protection Mode First! Then hit the start button and observe the logs. You may uninstall the Add-On when complete.
 
 
@@ -54,4 +54,6 @@ Make sure you replace the paths in both commands to match the ones displayed in 
 
 # Credits
 Adapted from the work by adamoutler:<br>
-https://github.com/adamoutler/HassOSConfigurator
+https://github.com/adamoutler/HassOSConfigurator<br>
+Forked from the work by sOckhamSter:<br>
+https://github.com/sOckhamSter/Pi5FanEnabler

@@ -8,7 +8,7 @@ The configuration creates four fan speed thresholds:<br>
 
 
 # Support
-Support is provided on the project's Github page
+Support is provided on the project's Github page https://github.com/olivierbutler/Pi5FanEnabler
 
 # Operation
 Disable Protection Mode First! Then hit the start button and observe the logs. You may uninstall the Add-On when complete. 
@@ -47,4 +47,6 @@ Make sure you replace the paths in both commands to match the ones displayed in 
 
 # Credits
 Adapted from the work by adamoutler:<br>
-https://github.com/adamoutler/HassOSConfigurator
+https://github.com/adamoutler/HassOSConfigurator<br>
+Forked from the work by sOckhamSter:<br>
+https://github.com/sOckhamSter/Pi5FanEnabler
