@@ -3,14 +3,22 @@ whoami
 id
 
 echo $0
+echo " "
+echo "############################################"
 
 nc -lk -p 8099 -e  echo -e 'HTTP/1.1 200 OK\r\nServer: DeskPiPro\r\nDate:$(date)\r\nContent-Type: text/html; charset=UTF8\r\nCache-Control: no-store, no cache, must-revalidate\r\n\r\n<!DOCTYPE html><html><body><p>HassOS Pi 5 Fan Enabler WebUI.</p></body></html>\r\n\n\n' &
 
+set -e
+CONFIG_PATH=/data/options.json
+FAN_TEMP0=$(bashio::config 'fan_temp0')
+FAN_TEMP0_S=$(bashio::config 'fan_temp0_speed')
+FAN_TEMP0_H=$(bashio::config 'fan_temp0_hyst')
+
 # Fan configuration lines
 fan_config_lines=(
-"dtparam=fan_temp0=35000"
-"dtparam=fan_temp0_hyst=5000"
-"dtparam=fan_temp0_speed=75"
+"dtparam=fan_temp0=${FAN_TEMP0}000"
+"dtparam=fan_temp0_hyst=${FAN_TEMP0_H}000"
+"dtparam=fan_temp0_speed=${FAN_TEMP0_S}"
 
 "dtparam=fan_temp1=50000"
 "dtparam=fan_temp1_hyst=5000"
@@ -46,6 +54,7 @@ until false; do
     mount /dev/$partition /tmp/$partition 2>/dev/null
 
     if [ -e /tmp/$partition/config.txt ]; then
+      sed -i '/dtparam=fan_temp/d' /tmp/$partition/config.txt
       for line in "${fan_config_lines[@]}"; do
         if ! grep -Fxq "$line" /tmp/$partition/config.txt; then
           echo "Adding '$line' to $partition/config.txt"
@@ -54,6 +63,10 @@ until false; do
           echo "'$line' already exists in $partition/config.txt"
         fi
       done
+      echo " "
+      echo "================================="
+      cat /tmp/$partition/config.txt
+      echo "================================="
     else
       echo "No config.txt found on $partition"
     fi
@@ -87,5 +100,8 @@ until false; do
   fi
   echo ""
   echo "Fan configuration complete. Perform a hard power-off reboot TWICE to activate."
+  echo " "
+  echo "############################################"
+
   sleep 99999
 done
