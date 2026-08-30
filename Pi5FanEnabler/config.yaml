@@ -25,9 +25,10 @@ options:
 #  fan_temp3_speed: 175
 #  fan_temp4: 65
 #  fan_temp4_speed: 250
-#schema:
-#  fan_temp0: int
-#  fan_temp0_speed: int
+schema:
+  fan_temp0: int
+  fan_temp0_speed: int
+  fan_temp0_hyst: int
 #  fan_temp1: int
 #  fan_temp1_speed: int
 #  fan_temp2: int
